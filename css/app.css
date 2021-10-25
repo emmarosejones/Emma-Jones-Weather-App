@@ -75,6 +75,10 @@ button {
 
 .pagetwo h2{
   padding:3rem;
+  font-family: 'Anton', sans-serif;
+  color: #AE0721;
+  text-shadow: 3px 3px #F8D7D7;
+  letter-spacing: .5rem;
 }
 
 .pagetwo p{
@@ -103,16 +107,10 @@ button {
   place-items:center;
 }
 
-.fas{
-  padding:1rem;
-  font-size:2rem;
-}
 
 h2{
- font-family: 'Comfortaa', cursive;
  font-size: 7rem;
- font-weight: bolder;
- color:#AE0721;
+ color: #AE0721;
 }
 
 h3{
@@ -151,10 +149,25 @@ background-size: cover;
 	padding: .7rem;
 }
 
+.fas{
+  padding: 1rem;
+  font-size: 1.5rem;
+}
 
  .goodapple img{
   width: 35%;
   height: auto;
 }
 
+.badapple img{
+  width: 35%;
+  height: auto;
+}
+
+h4{
+  font-family: 'Comfortaa', cursive;
+  padding: 2rem;
+  color:#AE0721;
+  text-transform: ;
+}
 

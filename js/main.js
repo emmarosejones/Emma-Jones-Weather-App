@@ -2,9 +2,9 @@
 // add the latitude and longitude for your location one lines 6 and 7
 // move on to adding your data requests on line 22
 function weatherBalloon() {
-  var key = '';
-  var lat = '';
-  var lon = '';
+  var key = '392812501d54e9429a5621c0bb22fd7a';
+  var lat = '41.8205';
+  var lon = '-71.5126';
   fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + key)  
   .then(function(resp) { return resp.json() }) // Convert data to json
   .then(function(data) {
@@ -16,17 +16,45 @@ function weatherBalloon() {
   });
 }
 
-$('button').click(function(){
-  $('.cover').addClass('open');
-})
+
+
 
 // display weather information
 function drawWeather( d ) {
+  $('.goodapple').html(printappleGraphic(d.current.weather[0].description));
+  $('.pagetwo h2').html(convertTemp(d.current.temp)) // add your specfic weather requests here
+  
+  //$day1
+  $('.day1 .day').html(displayDay(1) );
+  $('.day1 .high').html(convertTemp(d.daily[1].temp.max));
+  $('.day1 .low').html(convertTemp(d.daily[1].temp.min));
 
-  // add your specfic weather requests here
+  //$day2
+  $('.day2 .day').html(displayDay(2) );
+  $('.day2 .high').html(convertTemp(d.daily[2].temp.max));
+  $('.day2 .low').html(convertTemp(d.daily[2].temp.min));
+
+  //$day3
+  $('.day3 .day').html(displayDay(3) );
+  $('.day3 .high').html(convertTemp(d.daily[3].temp.max));
+  $('.day3 .low').html(convertTemp(d.daily[3].temp.min));
+
+  //$day4
+  $('.day4 .day').html(displayDay(4) );
+  $('.day4 .high').html(convertTemp(d.daily[4].temp.max));
+  $('.day4 .low').html(convertTemp(d.daily[4].temp.min));
+
+  //$day5
+  $('.day5 .day').html(displayDay(5) );
+  $('.day5 .high').html(convertTemp(d.daily[5].temp.max));
+  $('.day5 .low').html(convertTemp(d.daily[5].temp.min));
+
+//$day6
+  $('.day6 .day').html(displayDay(6) );
+  $('.day6 .high').html(convertTemp(d.daily[6].temp.max));
+  $('.day6 .low').html(convertTemp(d.daily[6].temp.min));
 
 }
-
 
 /* -----------------------------------------------
    Function for converting temp to fahrenheit
@@ -90,7 +118,30 @@ function printGraphic(d){
 
 }
 
+/* -----------------------------------------------
+   Function for printing weather-specific graphic
+   ----------------------------------------------- */
 
+function printappleGraphic(d){
+  
+  // if the description includes the word "rain"
+  if( d.indexOf('rain') > 0 ) {
+    return '<img src="img/badapple.svg" alt="Cloud icon">';
+  
+  // if the description includes the word "cloud"
+  } else if( d.indexOf('cloud') > 0 ) {
+    return '<img src="img/badapple.svg" alt="Cloud icon">';
+  
+  // if the description includes the word "sunny"
+  } else if( d.indexOf('sunny') > 0 ) {
+    return '<img src="img/goodapple.svg" alt="Cloud icon">';
+  
+  // if none of those cases are true, assume it's clear
+  } else {
+    return '<img src="img/goodapple.svg" alt="Cloud icon">';
+  }
+
+}
 /* -----------------------------------------------
    Function for converting time to hours/minutes
    ----------------------------------------------- */
@@ -163,6 +214,13 @@ function displayDay(n){
    Event to get weather information when page loads
    -------------------------------------------------- */
 
+
 window.onload = function() {
   weatherBalloon();
 }
+
+
+
+$('button').click(function(){
+  $('.cover').addClass('open');
+})
